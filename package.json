@@ -1,0 +1,26 @@
+{
+  "name": "apirest-full-nodejs",
+  "version": "0.1.0",
+  "description": "Proyecto apirest-full con NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isortegah/apirest-ful-nodejs.git"
+  },
+  "keywords": [
+    "APIREST",
+    "NODEJS",
+    "EXPRESS",
+    "JS",
+    "JWT"
+  ],
+  "author": "Ivan Sebastian Ortega Huixtlacatl (ISORTEGAH)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isortegah/apirest-full-nodejs/issues"
+  },
+  "homepage": "https://github.com/isortegah/apirest-full-nodejs#readme"
+}
