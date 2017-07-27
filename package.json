@@ -1,26 +1,22 @@
 {
-  "name": "apirest-full-nodejs",
-  "version": "0.1.0",
-  "description": "Proyecto apirest-full con NodeJS",
+  "name": "apirest-ful-nodejs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "",
   "main": "app.js",
+  "dependencies": {
+    "express": "^4.12.3",
+    "swagger-express-mw": "^0.1.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/isortegah/apirest-ful-nodejs.git"
-  },
-  "keywords": [
-    "APIREST",
-    "NODEJS",
-    "EXPRESS",
-    "JS",
-    "JWT"
-  ],
-  "author": "Ivan Sebastian Ortega Huixtlacatl (ISORTEGAH)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/isortegah/apirest-full-nodejs/issues"
-  },
-  "homepage": "https://github.com/isortegah/apirest-full-nodejs#readme"
+    "start": "node app.js",
+    "test": "swagger project test"
+  }
 }
