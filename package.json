@@ -10,9 +10,12 @@
   "dependencies": {
     "express": "^4.12.3",
     "swagger-express-mw": "^0.1.0",
-    "swagger-ui-express": "^2.0.4"
+    "swagger-ui-express": "^2.0.4",
+    "write-yaml": "^1.0.0"
   },
   "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
     "should": "^7.1.0",
     "supertest": "^1.0.0"
   },

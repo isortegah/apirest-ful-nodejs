@@ -52,6 +52,23 @@ Se tiene la funcionalidad de [Swagger UI](https://github.com/swagger-api/swagger
 npm install --save swagger-ui-express
 ```
 
+Esta líbreria trabaja con tipo de archivo `json`y el archivo que genera la libreria `swagger node` es con formato `yaml` , para solucionar este problema generé una función que lee el archivo `yaml` y escribe el `json` que requerimos, ademas ajusta el valor de la propiedad `host` que determina a donde se realizaran las peticiones que se lancen desde la interfaz `swagger`.
+
+* Constructor de json [buildJsonSwagger.js](api/libs/buildJsonSwagger.js)
+
+* Ejecución con `Grunt` [Gruntfile.js](Gruntfile.js)
+```javascript
+module.exports = ( grunt ) => {
+    let environment = grunt.option('ENV') || 'LOCAL';
+    grunt.registerTask( 'buildSwagger' , () => {
+        console.log(environment)
+        require('./api/libs/buildJsonSwagger')( 'LOCAL')
+    });
+}
+```
+
+Al ejecutar la aplicación se podrá ver la interfaz en la siguiente ruta: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
 **Referencias**
 
 > [Swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
