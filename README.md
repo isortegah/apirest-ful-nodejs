@@ -56,6 +56,17 @@ Esta líbreria trabaja con tipo de archivo `json`y el archivo que genera la libr
 
 * Constructor de json [buildJsonSwagger.js](api/libs/buildJsonSwagger.js)
 
+* Agregar archivo `routes.js``
+```javascript
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+module.exports = ( app ) => {
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    return app;
+}
+```
+
 * Ejecución con `Grunt` [Gruntfile.js](Gruntfile.js)
 ```javascript
 module.exports = ( grunt ) => {
