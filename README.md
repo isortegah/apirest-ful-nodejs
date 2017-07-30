@@ -3,12 +3,15 @@ APIREST FUL NODEJS
 
 ## Descripción
 
+Esta aplicación la podemos ver funcionando en **[demoapinode.isortegah.com/api-docs](http://demoapinode.isortegah.com/api-docs)** **Nota:** Se encuentra desplegada como contenedor Docker.
 
 
 # Índex
 * [Pre requisitos](#pre-requisitos)
 * [Swagger Node](#swagger-node)
 * [Swagger UI](#swagger-ui)
+* [Dockerizado](#dockerizado)
+* [Heroku](#heroku)
 
 ## Pre requisitos
 
@@ -117,3 +120,45 @@ docker run -it -p 3000:3000 < id imagen >
 ```
 docker ps -a | egrep Exited | cut -d ' ' -f 1|xargs docker rm
 ```
+
+## Heroku
+
+Pre requisitos
+* Instalación de [Heroku Cli](https://devcenter.heroku.com/articles/heroku-cli)
+
+* Crear app en Heroku
+
+```
+heroku create < nombre app >
+```
+* Establecer buildpack
+```
+heroku buildpacks:set heroku/nodejs --app api-rest-node-io
+```
+
+
+**Despliegue en heroku como docker**
+
+* Instalar plugin
+```
+heroku plugins:install heroku-container-registry
+```
+* Login en contenedor
+```
+heroku container:login
+```
+* Push codigo
+```
+heroku container:push web --app api-rest-node-io
+```
+* Correr bash en heroku
+```
+heroku run bash
+```
+**Referencia:**   
+
+[Container Registry and Runtime](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+
+[Push multiple Docker images to Heroku Container Registry](https://devcenter.heroku.com/changelog-items/1191)
+
+[Container Registry and Runtime | Heroku Dev Center](https://devcenter.heroku.com/articles/container-registry-and-runtime)
