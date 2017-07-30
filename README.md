@@ -85,3 +85,35 @@ Al ejecutar la aplicación se podrá ver la interfaz en la siguiente ruta: [http
 > [Swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
 
 > [Swagger UI](https://github.com/swagger-api/swagger-ui)
+
+## Dockerizado
+
+* `Docker file`
+```docker
+FROM isortegah/nodejs_8_2_1:v1
+ADD package.json /app/user/
+ADD package-lock.json /app/user/
+ADD api /app/user/
+ADD config /app/user/
+
+WORKDIR /app/user
+RUN npm install
+
+CMD node app.js
+```
+
+* Construcción de imagen
+
+```
+docker build -t api-node .
+```
+
+* Ejecución de imagen
+```
+docker run -it -p 3000:3000 < id imagen >
+```
+
+* Borrado de contenedores 
+```
+docker ps -a | egrep Exited | cut -d ' ' -f 1|xargs docker rm
+```
