@@ -6,7 +6,6 @@
 module.exports = ( grunt ) => {
     let environment = grunt.option('ENV') || 'LOCAL';
     grunt.registerTask( 'buildSwagger' , () => {
-        console.log(environment)
-        require('./api/libs/buildJsonSwagger')( 'LOCAL')
+        require('./api/libs/buildJsonSwagger')( environment )
     });
 }

@@ -1,49 +1,53 @@
 swagger: '2.0'
 info:
-  version: 0.0.1
-  title: Hello World App
-host: 'localhost:3000'
+  version: 0.1.0
+  title: Api RestFul en Nodejs
+  license:
+    name: MIT
+  description: >-
+    Aplicación que expone servicios de ayuda para preparación de datos y
+    ejecución de pruebas. Porque las pruebas en la integración continua es
+    nuestra meta.
+  contact:
+    name: Iván Sebastian Ortega Huixtlacatl
+    url: isortegah.me
+    email: isortegah@gmail.com
+host: demoapinode.isortegah.com
 basePath: /
 schemes:
   - http
-  - https
 consumes:
   - application/json
 produces:
   - application/json
+tags:
+  - name: version
+    description: >-
+      Servicio que ayuda a verificar la salud de la aplicación y muestra la
+      versión publicada.
+  - name: token
 paths:
-  /hello:
-    x-swagger-router-controller: hello_world
+  /version:
+    x-swagger-router-controller: version
     get:
-      description: Returns 'Hello' to the caller
-      operationId: hello
-      parameters:
-        - name: name
-          in: query
-          description: The name of the person to whom to say hello
-          required: false
-          type: string
+      tags:
+        - version
+      summary: >-
+        Servicio que permite ademas de saber la versión que se encuentra
+        desplegada, saber si esta respondiendo la API.
+      description: Regresa la version API desplegada
+      operationId: version
+      produces:
+        - application/json
       responses:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/HelloWorldResponse'
-        default:
-          description: Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+            $ref: '#/definitions/Version'
   /swagger:
     x-swagger-pipe: swagger_raw
 definitions:
-  HelloWorldResponse:
-    required:
-      - message
+  Version:
     properties:
-      message:
-        type: string
-  ErrorResponse:
-    required:
-      - message
-    properties:
-      message:
+      version:
         type: string

@@ -18,7 +18,7 @@ module.exports = ( environment ) => {
                     doc['host'] = host + ":" + port;
                 break;
                 case 'PROD' :
-                    doc['host'] = process.env.URLSWAGGER || '<api>.herokuapp.com'
+                    doc['host'] = process.env.URLSWAGGER || 'demoapinode.isortegah.com'
                 break;
             }
             yamlw.sync('api/swagger/swagger.yaml', doc);
