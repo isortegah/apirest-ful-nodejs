@@ -12,7 +12,7 @@ info:
     name: Iván Sebastian Ortega Huixtlacatl
     url: isortegah.me
     email: isortegah@gmail.com
-host: demoapinode.isortegah.com
+host: 'localhost:3000'
 basePath: /
 schemes:
   - http

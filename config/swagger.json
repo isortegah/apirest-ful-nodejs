@@ -13,7 +13,7 @@
       "email": "isortegah@gmail.com"
     }
   },
-  "host": "demoapinode.isortegah.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http"
@@ -34,6 +34,42 @@
     }
   ],
   "paths": {
+    "/token": {
+      "x-swagger-router-controller": "token",
+      "post": {
+        "description": "Devuelve el token de autorización que se utilizara para el consumo de los servicios.",
+        "summary": "Solicitar token de autorización",
+        "operationId": "postToken",
+        "tags": [
+          "token"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "description": "Obtener token",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token generado",
+            "schema": {
+              "$ref": "#/definitions/TokenResponse"
+            }
+          },
+          "400": {
+            "description": "Usuario no autorizado",
+            "schema": {
+              "$ref": "#/definitions/ErrorTokenRequest"
+            }
+          }
+        }
+      }
+    },
     "/version": {
       "x-swagger-router-controller": "version",
       "get": {
@@ -64,6 +100,35 @@
     "Version": {
       "properties": {
         "version": {
+          "type": "string"
+        }
+      }
+    },
+    "TokenResponse": {
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "TokenRequest": {
+      "type": "object",
+      "required": [
+        "user",
+        "password"
+      ],
+      "properties": {
+        "user": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "ErrorTokenRequest": {
+      "properties": {
+        "error": {
           "type": "string"
         }
       }

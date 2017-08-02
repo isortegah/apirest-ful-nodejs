@@ -162,3 +162,10 @@ heroku run bash
 [Push multiple Docker images to Heroku Container Registry](https://devcenter.heroku.com/changelog-items/1191)
 
 [Container Registry and Runtime | Heroku Dev Center](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+
+## Toke con JWT
+
+* Para desarrollo crear archivo `.env` con la siguiente variable:
+```
+SECRET="frase secreta"
+```

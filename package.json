@@ -9,11 +9,13 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
+    "jsonwebtoken": "^7.4.1",
     "swagger-express-mw": "^0.1.0",
     "swagger-ui-express": "^2.0.4",
     "write-yaml": "^1.0.0"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "should": "^7.1.0",
