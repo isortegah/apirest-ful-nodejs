@@ -12,7 +12,7 @@ info:
     name: Iván Sebastian Ortega Huixtlacatl
     url: isortegah.me
     email: isortegah@gmail.com
-host: 'localhost:3000'
+host: 'localhost:3001'
 basePath: /
 schemes:
   - http
@@ -45,11 +45,35 @@ paths:
           schema:
             $ref: '#/definitions/TokenRequest'
       responses:
-        '200':
+        '201':
           description: Token generado
           schema:
             $ref: '#/definitions/TokenResponse'
-        '400':
+        '401':
+          description: Usuario no autorizado
+          schema:
+            $ref: '#/definitions/ErrorTokenRequest'
+  /token/oauth:
+    x-swagger-router-controller: token
+    post:
+      description: Devuelve el token
+      summary: Silicitar token de autorización
+      operationId: postTokenOauth
+      tags:
+        - token
+      parameters:
+        - name: token
+          in: body
+          description: Obtener token
+          required: true
+          schema:
+            $ref: '#/definitions/TokenOauthRequest'
+      responses:
+        '201':
+          description: Token generado
+          schema:
+            $ref: '#/definitions/TokenResponse'
+        '401':
           description: Usuario no autorizado
           schema:
             $ref: '#/definitions/ErrorTokenRequest'
@@ -91,6 +115,20 @@ definitions:
         type: string
       password:
         type: string
+  TokenOauthRequest:
+    type: object
+    required:
+      - user
+      - idToken
+    properties:
+      user:
+        type: string
+      idToken:
+        type: string
+    example:
+      user: email@dominio.com
+      idToken: >-
+        eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzYzBkNDhkYWZkZTY2ZGRiYzdkZDIwODNjZTU1NDUyMTg4ZmFlZTgifQ.eyJhenAiOiI2ODMxOTY1NDE3ODAtMHFuYjVlbGM2bjlna291cG9pZG0wMGlhc2lqaHJubTMuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI2ODMxOTY1NDE3ODAtMHFuYjVlbGM2bjlna291cG9pZG0wMGlhc2lqaHJubTMuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTU1MTkwMzc0MjY1NTg5NzMzMjEiLCJoZCI6Im5lYXJicG8uY29tIiwiZW1haWwiOiJpb3J0ZWdhQG5lYXJicG8uY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJ6RDJKNTA2dGN1SE5VUENId3Jqczd3IiwiaXNzIjoiYWNjb3VudHMuZ29vZ2xlLmNvbSIsImlhdCI6MTUwMjUwNTcxMywiZXhwIjoxNTAyNTA5MzEzLCJuYW1lIjoiSXZhbiBPcnRlZ2EiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1PUGlIX1FLbm4zcy9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BTXA1VlVwWTNmblR2bnAybFpVUV92ejFJTUdoWnV1bEFnL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJJdmFuIiwiZmFtaWx5X25hbWUiOiJPcnRlZ2EiLCJsb2NhbGUiOiJlcy1NWCJ9.1W9jf8-0EY5KgaUiQ3ABjXUloKvbQDJsTIyvCU87xvRbeWiKWWrry30wpPJJZexWJnyjucrNPAzlCFilT3VsbeZrFY4iqs8BYi_kjK7Ci3m_Zidkihuexq0Nb95Q2wP2p3b1rb7_nBKOTaCoO1EqEqdl8Qz5G2Tq2FH5xTM_UZ6KP7qruQU97_O9f4ACEPjejoWtNQfPKF21OKdyQNcRLSYADL8osUt_M1_qv6WN9_DVLGtiywLZUjUYC7yLaveZVsCTyiVjsc8fwVO-mB1wDdFZCB_w4NHs0eAVuQPnxUntng0iUwFFSgU_qWyF-Ss9Pv9gsPTP7WBSmQPqwNYjaA
   ErrorTokenRequest:
     properties:
       error:

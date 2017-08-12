@@ -16,6 +16,12 @@ module.exports = {
                 .send({ 'token': token.getToken( req.body.user )})
                 .end();
         }else
-            res.status(400).send({'error': 'Usuario y/o Password incorrecto'});
+            res.status(401).send({'error': 'Usuario y/o Password incorrecto'});
+    },
+
+    postTokenOauth: ( req , res ) => {
+        res.status(201)
+        .send({ 'token': 'token.getToken( req.body.user )'})
+        .end();
     }
 }

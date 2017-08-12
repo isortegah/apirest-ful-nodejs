@@ -121,6 +121,12 @@ docker run -it -p 3000:3000 < id imagen >
 docker ps -a | egrep Exited | cut -d ' ' -f 1|xargs docker rm
 ```
 
+* Borrar imagenes < none >
+
+```
+docker images | egrep none | cut -c 41-53| xargs docker rmi
+```
+
 ## Heroku
 
 Pre requisitos

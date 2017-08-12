@@ -1,4 +1,4 @@
-FROM isortegah/nodejs_8_2_1:v1
+FROM isortegah/nodejs:v8.3.0
 ADD package.json /app/user/
 ADD package-lock.json /app/user/
 ADD . /app/user/

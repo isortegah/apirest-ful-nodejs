@@ -6,7 +6,7 @@ module.exports = ( environment ) => {
     var yaml = require('js-yaml'),
             fs   = require('fs');
         var yamlw = require('write-yaml');
-        var port = process.env.PORT || 3000;
+        var port = process.env.PORT || 3001;
         try {
             var doc = yaml.safeLoad(fs.readFileSync('api/swagger/swagger.yaml', 'utf8'));
             switch(environment){
