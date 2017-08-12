@@ -20,8 +20,26 @@ module.exports = {
     },
 
     postTokenOauth: ( req , res ) => {
-        res.status(201)
-        .send({ 'token': 'token.getToken( req.body.user )'})
-        .end();
+        const user = new Users();
+        
+        if(user.isUserEmailValid( req.body.user , req.body.idToken )){
+            if( !user.isNotExpiredDate(req.body.idToken) ){
+                let token = new GenerateToken();
+                res.status(201)
+                .send({ 'token': token.getToken( req.body.user )})
+                .end();
+            }else
+                res.status(401)
+                .send({
+                    error: "IdToken ha expirado"
+                })
+                .end();
+        }else{
+            res.status(401)
+                .send({
+                    error: "Usuario no autorizado"
+                })
+                .end();
+        }
     }
 }
