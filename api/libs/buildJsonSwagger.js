@@ -17,8 +17,11 @@ module.exports = ( environment ) => {
                     var host = process.env.URLSWAGGER || '192.168.99.100'
                     doc['host'] = host + ":" + port;
                 break;
-                case 'PROD' :
+                case 'DEMO' :
                     doc['host'] = process.env.URLSWAGGER || 'demoapinode.isortegah.com'
+                break;
+                case 'PROD' :
+                    doc['host'] = process.env.URLSWAGGER || 'apinode.isortegah.com'
                 break;
             }
             yamlw.sync('api/swagger/swagger.yaml', doc);

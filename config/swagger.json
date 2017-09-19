@@ -13,7 +13,7 @@
       "email": "isortegah@gmail.com"
     }
   },
-  "host": "localhost:3001",
+  "host": "apinode.isortegah.com",
   "basePath": "/",
   "schemes": [
     "http"
